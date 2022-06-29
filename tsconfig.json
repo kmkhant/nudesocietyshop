@@ -16,6 +16,7 @@
 		"incremental": true
 	},
 	"include": [
+		"pages/api/manual.js",
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",

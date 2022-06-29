@@ -16,6 +16,7 @@
 /build
 /nudesocietysanity/node_modules
 
+/pages/api/manual.ts
 # misc
 .DS_Store
 *.pem

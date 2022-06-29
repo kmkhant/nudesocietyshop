@@ -3,7 +3,6 @@ import algoliasearch from "algoliasearch";
 import sanityClient, {
 	SanityDocumentStub,
 } from "sanity-algolia/node_modules/@sanity/client";
-import { urlFor } from "../../sanity/sanity";
 import indexer from "sanity-algolia";
 
 const algolia = algoliasearch(
