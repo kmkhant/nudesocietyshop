@@ -41,7 +41,7 @@ const Home: NextPage<HomeProps> = ({
 						"Best Authenic Sneaker Shop in Mandalay",
 					images: [
 						{
-							url: "https://www.example.ie/og-image-01.jpg",
+							url: "https://nudesociety.vercel.app/logo.png",
 						},
 					],
 					site_name: "NUDE Society",

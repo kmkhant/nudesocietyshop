@@ -15,7 +15,7 @@ const sanity = sanityClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 	dataset: "production",
 	token: process.env.SANITY_API_TOKEN_READONLY,
-	apiVersion: "2022-03-25",
+	apiVersion: "2021-03-25",
 	useCdn: false,
 });
 
@@ -23,25 +23,33 @@ export default function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
+	if (req.headers["content-type"] !== "application/json") {
+		res.status(400);
+		res.json({ message: "Bad Request" });
+		return;
+	}
+
+	// Configure to match Algolia index name
+	const algoliaIndex = algolia.initIndex("dev_nudesociety");
+
 	const sanityAngolia = indexer(
 		{
 			products: {
-				index: algolia.initIndex("dev_nudesociety"),
+				index: algoliaIndex,
+				projection: `{
+						title,
+						price,
+						mainImage,
+						slug
+					}`,
 			},
 		},
 		(document: SanityDocumentStub) => {
 			switch (document._type) {
 				case "products":
-					return {
-						title: document.title,
-						slug: document.slug.current,
-						price: document.price,
-						image: urlFor(document.mainImage).url(),
-					};
+					return Object.assign({}, document);
 				default:
-					throw new Error(
-						`Unknown type: ${document._type}`
-					);
+					return document;
 			}
 		}
 	);
