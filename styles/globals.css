@@ -1,16 +1,35 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swiper-pagination-bullet-active {
+	width: 12px !important;
+	height: 4px !important;
+	border-radius: 0 !important;
+	background-color: #00ff01 !important;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.swiper-pagination-bullet {
+	width: 12px !important;
+	height: 4px !important;
+	border-radius: 0 !important;
 }
 
-* {
-  box-sizing: border-box;
+@layer components {
+	.shop-container {
+		@apply mx-8;
+	}
+}
+
+.ReactModal__Overlay {
+	opacity: 0;
+	transition: opacity 300ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+	opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+	opacity: 0;
 }
