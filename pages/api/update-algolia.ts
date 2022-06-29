@@ -58,6 +58,8 @@ export default async function handler(
 			products: {
 				index: algoliaIndex,
 				projection: `{
+						_type,
+						_rev,
 						_id,
 						title,
 						price,
