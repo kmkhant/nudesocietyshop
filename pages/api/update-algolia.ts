@@ -24,16 +24,6 @@ const sanity = sanityClient({
 
 const secret = process.env.ALGOLIA_ADMIN_API_KEY!;
 
-const readBody = async (readable: string) => {
-	const chunks = [];
-	for await (const chunk of readable) {
-		chunks.push(
-			typeof chunk === "string" ? Buffer.from(chunk) : chunk
-		);
-	}
-	return Buffer.concat(chunks).toString("utf-8");
-};
-
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
@@ -44,12 +34,11 @@ export default async function handler(
 		return;
 	}
 
-	const signature =
-		req.headers[SIGNATURE_HEADER_NAME] !== undefined
-			? req.headers[SIGNATURE_HEADER_NAME][0]
-			: "";
+	const signature = req.headers[
+		SIGNATURE_HEADER_NAME
+	] as string;
 
-	const body = await readBody(req.body);
+	const body = JSON.stringify(req.body);
 
 	if (!isValidSignature(body, signature, secret)) {
 		res.status(401).json({
@@ -60,13 +49,16 @@ export default async function handler(
 	}
 
 	// Configure to match Algolia index name
-	const algoliaIndex = algolia.initIndex("dev_nudesociety");
+	const algoliaIndex = algolia.initIndex(
+		process.env.ALGOLIA_INDEX!
+	);
 
 	const sanityAngolia = indexer(
 		{
 			products: {
 				index: algoliaIndex,
 				projection: `{
+						_id,
 						title,
 						price,
 						mainImage,
@@ -74,14 +66,7 @@ export default async function handler(
 					}`,
 			},
 		},
-		(document: SanityDocumentStub) => {
-			switch (document._type) {
-				case "products":
-					return Object.assign({}, document);
-				default:
-					return document;
-			}
-		}
+		(document: SanityDocumentStub) => document
 	);
 
 	return sanityAngolia

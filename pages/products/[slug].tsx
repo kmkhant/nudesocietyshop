@@ -228,5 +228,6 @@ export const getStaticProps: GetStaticProps = async ({
 			productData,
 			similarProductData,
 		},
+		revalidate: 60,
 	};
 };
