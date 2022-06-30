@@ -8,7 +8,11 @@ import Link from "next/link";
 import { FiltersMenu, ArrivalCard } from "../components";
 import { useStateContext } from "../context/StateContext";
 import { ProductData, ProductDataItems } from "../types";
-import { client, urlFor } from "../sanity/sanity";
+import {
+	client,
+	cdnClient,
+	urlFor,
+} from "../sanity/sanity";
 import { useEffect, useState } from "react";
 import { SpinnerDiamond } from "spinners-react";
 
@@ -42,7 +46,7 @@ const Shop: NextPage<ShopPageProps> = ({
 
 			setLoading(true);
 
-			client
+			cdnClient
 				.fetch(query, params)
 				.then((result) => {
 					setSelectedProductDataItems(result);
@@ -54,7 +58,7 @@ const Shop: NextPage<ShopPageProps> = ({
 			const query = `*[ _type == "products" ] [0...20]`;
 			setLoading(true);
 
-			client
+			cdnClient
 				.fetch(query)
 				.then((result) => {
 					setSelectedProductDataItems(result);

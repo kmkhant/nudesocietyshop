@@ -8,7 +8,15 @@ export const config = {
 	useCdn: false,
 };
 
+export const cdnConfig = {
+	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+	dataset: "production",
+	apiVersion: "2022-03-25",
+	useCdn: true,
+};
+
 export const client = createClient(config);
+export const cdnClient = createClient(cdnConfig);
 
 const builder = imageUrlBuilder(client);
 

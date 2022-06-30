@@ -1,13 +1,18 @@
 import { useRouter } from "next/router";
 import type { FC } from "react";
 import { SocialIcon } from "react-social-icons";
+import { useStateContext } from "../context/StateContext";
+
 const Footer: FC = () => {
+	const { showFilters } = useStateContext();
 	const router = useRouter();
 
 	return (
 		<div
 			className={`px-20 lg:px-40 ${
-				router.pathname === "/shop" ? "ml-48 sm:ml-64" : ""
+				router.pathname === "/shop" && showFilters
+					? "ml-40 sm:ml-64"
+					: "ml-4"
 			}`}
 		>
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
