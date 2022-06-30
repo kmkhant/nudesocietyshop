@@ -1,13 +1,15 @@
 import Image from "next/image";
-import { FC } from "react";
+import { FC, MouseEventHandler } from "react";
 import Link from "next/link";
 import { convertPrice } from "../utils/convertPrice";
+import { useStateContext } from "../context/StateContext";
+import React from "react";
 
 type ArrivalCardProps = {
 	image: string;
 	name: string;
 	price: number;
-	gender: string;
+	gender?: string;
 	slug: string;
 	new?: boolean;
 };
@@ -19,9 +21,19 @@ const ArrivalCard: FC<ArrivalCardProps> = ({
 	slug,
 	new: boolean,
 }) => {
+	const { panelOpen, setPanelOpen } = useStateContext();
+
+	const handleClick = (
+		event: React.MouseEvent<HTMLAnchorElement>
+	) => {
+		if (panelOpen) {
+			setPanelOpen(false);
+		}
+	};
+
 	return (
 		<Link href={`/products/${slug}`}>
-			<a>
+			<a onClick={handleClick}>
 				<div className="flex justify-center group cursor-pointer mb-10 py-5">
 					<div className="relative w-40 h-52 sm:w-48 lg:w-64 lg:h-64  rounded-md transition duration-300 ease-in-out">
 						<Image

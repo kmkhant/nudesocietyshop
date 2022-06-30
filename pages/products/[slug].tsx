@@ -14,7 +14,7 @@ import "swiper/css/pagination";
 import { client, urlFor } from "../../sanity/sanity";
 import { ProductDataItems, ProductData } from "../../types";
 import { convertPrice } from "../../utils/convertPrice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NextSeo } from "next-seo";
 
 type ProductPageProps = {
@@ -30,6 +30,10 @@ const Product: NextPage<ProductPageProps> = ({
 	const [mainImageUrl, setMainImageUrl] = useState(mainUrl);
 	var holdingMainImage = false;
 
+	useEffect(() => {
+		setMainImageUrl(mainUrl);
+	}, [mainUrl]);
+
 	const handleMouseEnter = (url: string) => {
 		if (!holdingMainImage) {
 			holdingMainImage = true;
@@ -44,29 +48,6 @@ const Product: NextPage<ProductPageProps> = ({
 
 	return (
 		<div className="pt-32 px-20">
-			<NextSeo
-				title={productData.title}
-				description={productData.description}
-				canonical="https://nudesociety.shop"
-				openGraph={{
-					url: "https://nudesociety.shop",
-					title: "NUDE Society",
-					description:
-						"Best Authenic Sneaker Shop in Mandalay",
-					images: [
-						{
-							url: "https://nudesociety.shop/assets/logo.png",
-						},
-					],
-					site_name: "NUDE Society",
-				}}
-				additionalMetaTags={[
-					{
-						name: "keywords",
-						content: "NUDE Society, nudesociety mandalay",
-					},
-				]}
-			/>
 			<div className="flex space-x-2 items-center">
 				<ArrowNarrowLeftIcon className="h-5 w-5 text-mainColor" />
 				<Link href="/">Home</Link>

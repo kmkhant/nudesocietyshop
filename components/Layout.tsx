@@ -24,7 +24,7 @@ const Layout: FC<React.PropsWithChildren> = ({
 			</footer>
 			<Modal
 				isOpen={panelOpen}
-				className="absolute bg-white w-full h-full px-32 z-50"
+				className="absolute bg-white w-full h-full px-6 md:px-32 z-50"
 				closeTimeoutMS={300}
 			>
 				<SearchModal />

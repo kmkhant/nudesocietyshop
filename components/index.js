@@ -5,4 +5,5 @@ export { default as Layout } from "./Layout";
 export { default as Navbar } from "./Navbar";
 export { default as ReviewCard } from "./ReviewCard";
 export { default as FiltersMenu } from "./FiltersMenu";
-export { default as SearchModal } from "./SearchModal";
+export { default as SearchModal } from "./Search/SearchModal";
+export { default as ControlledSearchBox } from "./Search/ControlledSearchBox";
