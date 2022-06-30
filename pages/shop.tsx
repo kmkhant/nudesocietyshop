@@ -1,5 +1,9 @@
 import type { GetStaticProps, NextPage } from "next";
-import { ArrowNarrowLeftIcon } from "@heroicons/react/outline";
+import {
+	ArrowNarrowLeftIcon,
+	ChevronDownIcon,
+	ChevronUpIcon,
+} from "@heroicons/react/outline";
 import Link from "next/link";
 import { FiltersMenu, ArrivalCard } from "../components";
 import { useStateContext } from "../context/StateContext";
@@ -15,13 +19,21 @@ interface ShopPageProps {
 const Shop: NextPage<ShopPageProps> = ({
 	productDataItems,
 }) => {
-	const { selectedBrand } = useStateContext();
+	const { selectedBrand, showFilters, setShowFilters } =
+		useStateContext();
 	const [loading, setLoading] = useState(true);
-
 	const [
 		selectedProductDataItems,
 		setSelectedProductDataItems,
 	] = useState(productDataItems);
+
+	// Mobile View Filters On/Off
+
+	useEffect(() => {
+		if (window.innerWidth < 400) {
+			setShowFilters(true);
+		}
+	}, []);
 
 	useEffect(() => {
 		if (selectedBrand !== "All") {
@@ -58,21 +70,35 @@ const Shop: NextPage<ShopPageProps> = ({
 				<ArrowNarrowLeftIcon className="h-5 w-5 text-mainColor" />
 				<Link href="/">HOME</Link>
 			</div>
-			<div className="fixed mt-5 flex">
+			<div
+				className="fixed mt-5 flex items-center space-x-4 bg-white"
+				onClick={() =>
+					setShowFilters((prev: boolean) => !prev)
+				}
+			>
 				<p
 					className={`font-bold my-3 ${
-						selectedBrand === "Anti social social club"
+						selectedBrand === "Anti Social Social Club"
 							? "text-md"
 							: "text-2xl"
 					}`}
 				>
-					{selectedBrand}
+					{selectedBrand}{" "}
 				</p>
+				{showFilters ? (
+					<ChevronUpIcon className="w-5 h-5" />
+				) : (
+					<ChevronDownIcon className="w-5 h-5" />
+				)}
 			</div>
 			<div className="flex justify-between mt-12 sm:mt-0">
 				<FiltersMenu w={200} h={300} />
-				<FiltersMenu w={180} h={300} />
-				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 ml-48 sm:ml-56 content-center grow gap-5 ">
+				{showFilters && <FiltersMenu w={180} h={300} />}
+				<div
+					className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 ${
+						showFilters ? "ml-48" : "ml-4"
+					} sm:ml-56 content-center grow gap-5 transition-all duration-300 ease-in-out`}
+				>
 					{!loading &&
 						selectedProductDataItems.length > 0 &&
 						selectedProductDataItems.map((productData) => (

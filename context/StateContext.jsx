@@ -3,10 +3,10 @@ import { createContext, useContext, useState } from "react";
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
-	const [selectedBrand, setSelectedBrand] =
-		useState("Adidas");
+	const [selectedBrand, setSelectedBrand] = useState("All");
 
 	const [panelOpen, setPanelOpen] = useState(false);
+	const [showFilters, setShowFilters] = useState(false);
 
 	return (
 		<Context.Provider
@@ -15,6 +15,8 @@ export const StateContext = ({ children }) => {
 				setSelectedBrand,
 				panelOpen,
 				setPanelOpen,
+				showFilters,
+				setShowFilters,
 			}}
 		>
 			{children}
