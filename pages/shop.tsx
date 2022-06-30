@@ -24,18 +24,32 @@ const Shop: NextPage<ShopPageProps> = ({
 	] = useState(productDataItems);
 
 	useEffect(() => {
-		const params = { brand: selectedBrand };
-		const query = `*[_type == "products" && brand->.title == $brand ] [0...20]`;
+		if (selectedBrand !== "All") {
+			const params = { brand: selectedBrand };
+			const query = `*[_type == "products" && brand->.title == $brand ] [0...20]`;
 
-		setLoading(true);
+			setLoading(true);
 
-		client
-			.fetch(query, params)
-			.then((result) => {
-				setSelectedProductDataItems(result);
-				setLoading(false);
-			})
-			.catch((e) => console.log(e));
+			client
+				.fetch(query, params)
+				.then((result) => {
+					setSelectedProductDataItems(result);
+					setLoading(false);
+				})
+				.catch((e) => console.log(e));
+		}
+		if (selectedBrand === "All") {
+			const query = `*[ _type == "products" ] [0...20]`;
+			setLoading(true);
+
+			client
+				.fetch(query)
+				.then((result) => {
+					setSelectedProductDataItems(result);
+					setLoading(false);
+				})
+				.catch((e) => console.log(e));
+		}
 	}, [selectedBrand]);
 
 	return (

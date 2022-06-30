@@ -33,15 +33,17 @@ const Home: NextPage<HomeProps> = ({
 			<NextSeo
 				title="NUDE Society"
 				description="Best Authenic Sneaker Shop in Mandalay"
-				canonical="http://localhost:3000"
+				canonical="https://nudesocietyshop.vercel.app/"
 				openGraph={{
-					url: "https://nudesociety.vercel.app",
+					url: "https://nudesocietyshop.vercel.app",
 					title: "NUDE Society",
 					description:
 						"Best Authenic Sneaker Shop in Mandalay",
 					images: [
 						{
 							url: "https://nudesocietyshop.vercel.app/logo.png",
+							height: 100,
+							width: 100,
 						},
 					],
 					site_name: "NUDE Society",

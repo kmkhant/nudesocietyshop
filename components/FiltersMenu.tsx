@@ -4,6 +4,7 @@ import { useStateContext } from "../context/StateContext";
 import { Property } from "csstype";
 
 const brands: string[] = [
+	"All",
 	"Adidas",
 	"Anti Social Social Club",
 	"Bape",
