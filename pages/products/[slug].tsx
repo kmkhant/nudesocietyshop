@@ -53,7 +53,7 @@ const Product: NextPage<ProductPageProps> = ({
 				<Link href="/">Home</Link>
 			</div>
 			<div className="grid grid-cols-1 md:grid-cols-3 mt-5 mb-5">
-				<div className="col-span-2 mx-16">
+				<div className="col-span-2 mx-3 md:mx-16">
 					<div className="cursor-pointer flex justify-center">
 						<Image
 							src={mainImageUrl}
