@@ -22,7 +22,7 @@ const sanity = sanityClient({
 	useCdn: false,
 });
 
-const secret = process.env.ALGOLIA_ADMIN_API_KEY!;
+const secret = process.env.ALGOLIA_ADMIN_API_KEY as string;
 
 export default async function handler(
 	req: NextApiRequest,

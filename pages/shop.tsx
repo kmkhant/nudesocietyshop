@@ -58,7 +58,7 @@ const Shop: NextPage<ShopPageProps> = ({
 				<ArrowNarrowLeftIcon className="h-5 w-5 text-mainColor" />
 				<Link href="/">HOME</Link>
 			</div>
-			<div className="fixed mt-5 flex flex-col">
+			<div className="fixed mt-5 flex">
 				<p
 					className={`font-bold my-3 ${
 						selectedBrand === "Anti social social club"
