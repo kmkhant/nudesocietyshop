@@ -27,10 +27,11 @@ const Home: NextPage<HomeProps> = ({
 	yeezyTabData,
 	newBalanceTabData,
 	newArrivalTabData,
+	trendingTabData,
 }) => {
 	const { panelOpen } = useStateContext();
 	return (
-		<div>
+		<div className="px-10 lg:px-40">
 			<NextSeo
 				title="NUDE Society"
 				description="Best Authenic Sneaker Shop in Mandalay"
@@ -57,7 +58,7 @@ const Home: NextPage<HomeProps> = ({
 				]}
 			/>
 
-			<div className="px-20 grid grid-cols-1 lg:grid-cols-2 lg:px-40 pt-32">
+			<div className="grid grid-cols-1 lg:grid-cols-2 pt-32">
 				<div>
 					<p className="text-3xl font-russo md:text-7xl">
 						Summer <br /> Collections
@@ -128,7 +129,7 @@ const Home: NextPage<HomeProps> = ({
 					<p className="ml-20">Happy Customers</p>
 				</div>
 			</div>
-			<div className="mt-8 px-20 lg:px-40">
+			<div className="mt-8">
 				<h1 className="font-russo text-3xl md:text-5xl text-center">
 					What We{" "}
 					<span className="text-mainColor">Offer</span>
@@ -172,7 +173,7 @@ const Home: NextPage<HomeProps> = ({
 					</div>
 				</div>
 			</div>
-			<div className="mt-8 px-20 lg:px-40">
+			<div className="mt-8">
 				<h3 className="font-russo text-3xl md:text-5xl text-center">
 					Our Bestselling{" "}
 					<span className="text-mainColor">Collecions</span>
@@ -228,7 +229,7 @@ const Home: NextPage<HomeProps> = ({
 					</Tabs>
 				</div>
 			</div>
-			<div className="mt-8 px-20 lg:px-40">
+			<div className="mt-8">
 				<h3 className="font-russo text-3xl md:text-5xl text-center">
 					What Our{" "}
 					<span className="text-mainColor">
@@ -289,7 +290,7 @@ const Home: NextPage<HomeProps> = ({
 					</Swiper>
 				)}
 			</div>
-			<div className="mt-8 px-20 lg:px-40 mb-10">
+			<div className="mt-8 mb-5 md:mb-10">
 				<Tabs>
 					<TabList>
 						<Tab>New Arrivals</Tab>
@@ -329,7 +330,37 @@ const Home: NextPage<HomeProps> = ({
 						</Swiper>
 					</TabPanel>
 					<TabPanel>
-						<p>2</p>
+						<Swiper
+							spaceBetween={30}
+							pagination={{
+								clickable: true,
+							}}
+							modules={[Pagination]}
+							breakpoints={{
+								800: {
+									slidesPerView: 4,
+								},
+
+								640: {
+									slidesPerView: 2,
+								},
+								0: {
+									slidesPerView: 1,
+								},
+							}}
+							className="mt-5"
+						>
+							{trendingTabData.map((product) => (
+								<SwiperSlide key={product._id}>
+									<ArrivalCard
+										image={urlFor(product.mainImage).url()}
+										name={product.title}
+										price={product.price}
+										slug={product.slug.current}
+									/>
+								</SwiperSlide>
+							))}
+						</Swiper>
 					</TabPanel>
 				</Tabs>
 			</div>
@@ -356,6 +387,10 @@ export async function getStaticProps() {
 		`*[_type == "newandtrending" && title == "New Arrivals" ].products[]->{_id, title, mainImage, price, slug}`
 	);
 
+	const trendingTabData = await client.fetch(
+		`*[_type == "newandtrending" && title == "Trending" ].products[]->{_id, title, mainImage, price, slug}`
+	);
+
 	const mainImageQuery = await client.fetch(`
 		*[_type == "heroImage"]
 	`);
@@ -377,6 +412,7 @@ export async function getStaticProps() {
 			yeezyTabData,
 			newBalanceTabData,
 			newArrivalTabData,
+			trendingTabData,
 		},
 	};
 }
