@@ -26,6 +26,7 @@ export interface HomeProps {
 	nikeTabData: TabDataItems;
 	yeezyTabData: TabDataItems;
 	newBalanceTabData: TabDataItems;
+	newArrivalTabData: TabDataItems;
 }
 
 export interface ProductData {

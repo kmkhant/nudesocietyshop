@@ -11,9 +11,9 @@ const Footer: FC = () => {
 		<div
 			className={`px-20 lg:px-40 ${
 				router.pathname === "/shop" && showFilters
-					? "ml-40 sm:ml-64"
+					? "ml-40"
 					: "ml-4"
-			}`}
+			} sm:ml-64 transition-all duration-300 ease-in-out`}
 		>
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 				<div className="flex flex-col">

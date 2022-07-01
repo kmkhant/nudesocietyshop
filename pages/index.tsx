@@ -26,6 +26,7 @@ const Home: NextPage<HomeProps> = ({
 	nikeTabData,
 	yeezyTabData,
 	newBalanceTabData,
+	newArrivalTabData,
 }) => {
 	const { panelOpen } = useStateContext();
 	return (
@@ -315,56 +316,16 @@ const Home: NextPage<HomeProps> = ({
 							}}
 							className="mt-5"
 						>
-							<SwiperSlide>
-								<ArrivalCard
-									image="/assets/img/demo.webp"
-									name="YZY 700 MNVN"
-									price={249000}
-									gender="Men"
-									new={true}
-									slug="yzy-700"
-								/>
-							</SwiperSlide>
-							<SwiperSlide>
-								<ArrivalCard
-									image="/assets/img/demo.webp"
-									name="YZY 700 MNVN"
-									price={249000}
-									gender="Men"
-									new={true}
-									slug="yzy-700"
-								/>
-							</SwiperSlide>
-							<SwiperSlide>
-								<ArrivalCard
-									image="/assets/img/demo.webp"
-									name="YZY 700 MNVN"
-									price={249000}
-									gender="Men"
-									new={true}
-									slug="yzy-700"
-								/>
-							</SwiperSlide>
-							<SwiperSlide>
-								<ArrivalCard
-									image="/assets/img/demo.webp"
-									name="YZY 700 MNVN"
-									price={249000}
-									gender="Men"
-									new={true}
-									slug="yzy-700"
-								/>
-							</SwiperSlide>
-							<SwiperSlide>
-								<ArrivalCard
-									image="/assets/img/demo.webp"
-									name="YZY 700 MNVN"
-									price={249000}
-									gender="Men"
-									new={true}
-									slug="yzy-700"
-								/>
-							</SwiperSlide>
+							{newArrivalTabData.map((product) => (
+								<SwiperSlide key={product._id}>
+									<ArrivalCard
+										image={urlFor(product.mainImage).url()}
+										name={product.title}
+										price={product.price}
+										slug={product.slug.current}
+									/>
+								</SwiperSlide>
+							))}
 						</Swiper>
 					</TabPanel>
 					<TabPanel>
@@ -391,6 +352,10 @@ export async function getStaticProps() {
 		`*[_type == "bestselling" && brand == "New Balance" ].products[]->{_id, title, mainImage, price, slug}`
 	);
 
+	const newArrivalTabData = await client.fetch(
+		`*[_type == "newandtrending" && title == "New Arrivals" ].products[]->{_id, title, mainImage, price, slug}`
+	);
+
 	const mainImageQuery = await client.fetch(`
 		*[_type == "heroImage"]
 	`);
@@ -411,6 +376,7 @@ export async function getStaticProps() {
 			nikeTabData,
 			yeezyTabData,
 			newBalanceTabData,
+			newArrivalTabData,
 		},
 	};
 }

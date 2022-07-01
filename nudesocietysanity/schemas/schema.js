@@ -8,6 +8,7 @@ import products from "./products";
 import category from "./category";
 import heroImage from "./heroImage";
 import bestselling from "./bestselling";
+import newandtrending from "./newandtrending";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -21,5 +22,6 @@ export default createSchema({
 		category,
 		heroImage,
 		bestselling,
+		newandtrending,
 	]),
 });
