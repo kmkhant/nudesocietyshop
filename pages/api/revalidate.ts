@@ -32,7 +32,7 @@ export default async function handler(
 	const slug = req.body.slug.current;
 
 	try {
-		await res.unstable_revalidate(`/products/${slug}`);
+		await res.revalidate(`/products/${slug}`);
 		return res.json({ revalidated: true });
 	} catch (err) {
 		return res.status(500).send("Error Validating");
