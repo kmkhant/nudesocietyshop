@@ -27,6 +27,7 @@ export interface HomeProps {
 	yeezyTabData: TabDataItems;
 	newBalanceTabData: TabDataItems;
 	newArrivalTabData: TabDataItems;
+	trendingTabData: TabDataItems;
 }
 
 export interface ProductData {
