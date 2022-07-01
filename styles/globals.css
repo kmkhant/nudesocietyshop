@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.swiper-pagination {
+	transform: translate3d(0, 15px, 0) !important;
+}
+
 .swiper-pagination-bullet-active {
 	width: 12px !important;
 	height: 4px !important;
