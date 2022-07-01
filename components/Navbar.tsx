@@ -11,7 +11,7 @@ const Navbar: FC = () => {
 
 	return (
 		<div
-			className={`flex items-center justify-between py-6 bg-white fixed w-full z-10 px-20`}
+			className={`flex items-center justify-between py-6 bg-white fixed w-full z-10 px-5 md:px-20`}
 		>
 			<Link href="/">
 				<a>
