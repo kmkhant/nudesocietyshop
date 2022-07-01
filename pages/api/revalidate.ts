@@ -33,7 +33,7 @@ export default async function handler(
 
 	try {
 		await res.revalidate(`/products/${slug}`);
-		return res.json({ revalidated: true });
+		return res.status(200).json({ revalidated: true });
 	} catch (err) {
 		return res.status(500).send("Error Validating");
 	}
