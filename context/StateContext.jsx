@@ -6,7 +6,7 @@ export const StateContext = ({ children }) => {
 	const [selectedBrand, setSelectedBrand] = useState("All");
 
 	const [panelOpen, setPanelOpen] = useState(false);
-	const [showFilters, setShowFilters] = useState(false);
+	const [showFilters, setShowFilters] = useState(true);
 
 	return (
 		<Context.Provider
