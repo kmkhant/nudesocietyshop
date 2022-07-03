@@ -23,9 +23,7 @@ const Layout: FC<React.PropsWithChildren> = ({
 						"Best Authenic Sneaker Shop in Mandalay",
 					images: [
 						{
-							url: "https://nudesocietyshop.vercel.app/logo.png",
-							height: 100,
-							width: 100,
+							url: "https://nudesocietyshop.vercel.app/homepage.png",
 						},
 					],
 					site_name: "NUDE Society",
