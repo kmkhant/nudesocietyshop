@@ -41,3 +41,7 @@
 .ReactModal__Overlay--before-close {
 	opacity: 0;
 }
+
+.swiper-wrapper {
+	padding-bottom: 30px;
+}

@@ -4,16 +4,15 @@ import { StarIcon } from "@heroicons/react/solid";
 import CountUp from "react-countup";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Pagination } from "swiper";
 import { faker } from "@faker-js/faker";
 import {
 	ArrivalCard,
 	Card,
 	ReviewCard,
 } from "../components";
-import { NextSeo } from "next-seo";
 import { cdnClient, urlFor } from "../sanity/sanity";
 import Link from "next/link";
 import { convertPrice } from "../utils/convertPrice";
@@ -32,32 +31,6 @@ const Home: NextPage<HomeProps> = ({
 	const { panelOpen } = useStateContext();
 	return (
 		<div className="px-10 lg:px-40">
-			<NextSeo
-				title="NUDE Society"
-				description="Best Authentic Sneaker Shop in Mandalay"
-				canonical="https://nudesocietyshop.vercel.app/"
-				openGraph={{
-					url: "https://nudesocietyshop.vercel.app",
-					title: "NUDE Society",
-					description:
-						"Best Authenic Sneaker Shop in Mandalay",
-					images: [
-						{
-							url: "https://nudesocietyshop.vercel.app/logo.png",
-							height: 100,
-							width: 100,
-						},
-					],
-					site_name: "NUDE Society",
-				}}
-				additionalMetaTags={[
-					{
-						name: "keywords",
-						content: "NUDE Society, nudesociety mandalay",
-					},
-				]}
-			/>
-
 			<div className="grid grid-cols-1 lg:grid-cols-2 pt-32">
 				<div>
 					<p className="text-3xl font-russo md:text-7xl">
@@ -260,7 +233,6 @@ const Home: NextPage<HomeProps> = ({
 								slidesPerView: 1,
 							},
 						}}
-						className="mt-5"
 					>
 						<SwiperSlide>
 							<ReviewCard
