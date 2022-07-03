@@ -5,6 +5,10 @@ const nextConfig = {
 		domains: ["cloudflare-ipfs.com", "cdn.sanity.io"],
 	},
 	swcMinify: true,
+	i18n: {
+		locales: ["en"],
+		defaultLocale: "en",
+	},
 };
 
 module.exports = nextConfig;

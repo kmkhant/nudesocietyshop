@@ -115,12 +115,12 @@ const Product: NextPage<ProductPageProps> = ({
 					</div>
 				</div>
 				<div className="mt-5 md:mt-0">
-					<p className="text-xl font-medium">
+					<h1 className="text-xl font-medium">
 						{productData.title}
-					</p>
-					<p className="text-md">
+					</h1>
+					<h3 className="text-md">
 						{productData.categoryName}
-					</p>
+					</h3>
 					<p className="text-md">
 						{convertPrice(productData.price)} MMK
 					</p>

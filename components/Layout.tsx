@@ -9,7 +9,7 @@ Modal.setAppElement("#__next");
 const Layout: FC<React.PropsWithChildren> = ({
 	children,
 }) => {
-	const { panelOpen, setPanelOpen } = useStateContext();
+	const { panelOpen } = useStateContext();
 	return (
 		<div className={`font-sans`}>
 			<NextSeo

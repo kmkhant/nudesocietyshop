@@ -39,7 +39,7 @@ const Shop: NextPage<ShopPageProps> = ({
 	const [pageIndex, setPageIndex] =
 		useState(pageFetchCount);
 	const [endPageIndex, setEndPageIndex] = useState(
-		pageFetchCount + 2
+		pageFetchCount * 2
 	);
 
 	const [infiniteDataItems, setInfiniteDataItems] =
