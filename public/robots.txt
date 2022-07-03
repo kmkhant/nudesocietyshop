@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Allow: /shop
+Allow: /products/*
+
+# Host
+Host: https://nudesociety.shop/
+
+# Sitemaps
+Sitemap: https://nudesociety.shop/sitemap.xml
