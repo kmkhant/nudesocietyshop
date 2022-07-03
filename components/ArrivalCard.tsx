@@ -38,7 +38,7 @@ const ArrivalCard: FC<ArrivalCardProps> = ({
 					<div className="relative w-40 h-52 sm:w-48 lg:w-64 lg:h-64  rounded-md transition duration-300 ease-in-out">
 						<Image
 							src={image}
-							alt="yzy 700 mnvn"
+							alt={`nudesociety-${name}`}
 							width={1000}
 							height={1000}
 						/>

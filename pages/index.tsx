@@ -14,7 +14,7 @@ import {
 	ReviewCard,
 } from "../components";
 import { NextSeo } from "next-seo";
-import { client, urlFor } from "../sanity/sanity";
+import { cdnClient, urlFor } from "../sanity/sanity";
 import Link from "next/link";
 import { convertPrice } from "../utils/convertPrice";
 // Import Types
@@ -34,7 +34,7 @@ const Home: NextPage<HomeProps> = ({
 		<div className="px-10 lg:px-40">
 			<NextSeo
 				title="NUDE Society"
-				description="Best Authenic Sneaker Shop in Mandalay"
+				description="Best Authentic Sneaker Shop in Mandalay"
 				canonical="https://nudesocietyshop.vercel.app/"
 				openGraph={{
 					url: "https://nudesocietyshop.vercel.app",
@@ -102,9 +102,16 @@ const Home: NextPage<HomeProps> = ({
 									/>
 								))}
 							</div>
-							<button className="py-1 px-2 border-2 border-black text-black font-russo transition-colors hover:bg-mainColor hover:border-mainColor duration-300">
-								BUY NOW
-							</button>
+
+							<a
+								href="https://www.facebook.com/NUDE-society-102294842099819/"
+								target="_blank"
+								rel="noreferrer"
+							>
+								<button className="py-1 px-2 border-2 border-black text-black font-russo transition-colors hover:bg-mainColor hover:border-mainColor duration-300">
+									BUY NOW
+								</button>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -370,28 +377,28 @@ const Home: NextPage<HomeProps> = ({
 
 export default Home;
 
-export async function getStaticProps() {
-	const nikeTabData = await client.fetch(
+export async function getServerSideProps() {
+	const nikeTabData = await cdnClient.fetch(
 		`*[_type == "bestselling" && brand == "Nike" ].products[]->{_id, title, mainImage, price, slug}`
 	);
 
-	const yeezyTabData = await client.fetch(
+	const yeezyTabData = await cdnClient.fetch(
 		`*[_type == "bestselling" && brand == "Yeezy" ].products[]->{_id, title, mainImage, price, slug}`
 	);
 
-	const newBalanceTabData = await client.fetch(
+	const newBalanceTabData = await cdnClient.fetch(
 		`*[_type == "bestselling" && brand == "New Balance" ].products[]->{_id, title, mainImage, price, slug}`
 	);
 
-	const newArrivalTabData = await client.fetch(
+	const newArrivalTabData = await cdnClient.fetch(
 		`*[_type == "newandtrending" && title == "New Arrivals" ].products[]->{_id, title, mainImage, price, slug}`
 	);
 
-	const trendingTabData = await client.fetch(
+	const trendingTabData = await cdnClient.fetch(
 		`*[_type == "newandtrending" && title == "Trending" ].products[]->{_id, title, mainImage, price, slug}`
 	);
 
-	const mainImageQuery = await client.fetch(`
+	const mainImageQuery = await cdnClient.fetch(`
 		*[_type == "heroImage"]
 	`);
 

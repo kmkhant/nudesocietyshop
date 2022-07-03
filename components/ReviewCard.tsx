@@ -19,7 +19,7 @@ const ReviewCard: FC<ReviewProps> = ({
 			<div className="flex">
 				<Image
 					src={image}
-					alt="image"
+					alt={`nudesociety-${name}`}
 					height={40}
 					width={40}
 					layout="fixed"

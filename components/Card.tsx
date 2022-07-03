@@ -20,7 +20,11 @@ const Card: FC<CardProps> = ({
 			<div className="group cursor-pointer">
 				<div className="relative w-64 h-64 rounded-md transition duration-300 ease-in-out overflow-hidden">
 					<div className="relative flex justify-center w-full h-full">
-						<Image src={image} alt={name} layout="fill" />
+						<Image
+							src={image}
+							alt={`nudesociety-${name}`}
+							layout="fill"
+						/>
 					</div>
 				</div>
 				<h3 className="font-russo text-center text-xl mt-3 group-hover:text-mainColor transition duration-300 ease-in-out">

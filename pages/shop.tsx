@@ -204,6 +204,7 @@ const Shop: NextPage<ShopPageProps> = ({
 								speed={100}
 								color="rgba(0, 255, 3, 1)"
 								secondaryColor="rgba(0, 0, 0, 0.44)"
+								key={0}
 							/>
 						}
 					>

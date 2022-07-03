@@ -48,6 +48,39 @@ const Product: NextPage<ProductPageProps> = ({
 
 	return (
 		<div className="pt-32 px-20">
+			<NextSeo
+				title={`${productData.title} - NUDE Society`}
+				description={`${productData.description} - Nude Society`}
+				canonical={`${
+					process.env.NODE_ENV === "development"
+						? "https://nudesocietyshop.vercel.app/"
+						: "https://nudesociety.shop"
+				}`}
+				openGraph={{
+					url: `${
+						process.env.NODE_ENV === "development"
+							? "https://nudesocietyshop.vercel.app/"
+							: "https://nudesociety.shop"
+					}`,
+					title: `${productData.title} - NUDE Society`,
+					description: `${productData.productCode}`,
+					images: [
+						{
+							url: "https://nudesocietyshop.vercel.app/logo.png",
+							height: 100,
+							width: 100,
+						},
+					],
+					site_name: "NUDE Society",
+					type: "website",
+				}}
+				additionalMetaTags={[
+					{
+						name: "keywords",
+						content: "NUDE Society, nudesociety mandalay",
+					},
+				]}
+			/>
 			<div className="flex space-x-2 items-center">
 				<ArrowNarrowLeftIcon className="h-5 w-5 text-mainColor" />
 				<Link href="/">Home</Link>
@@ -113,9 +146,20 @@ const Product: NextPage<ProductPageProps> = ({
 						Waiting and Delivery
 					</p>
 					<ul className="list-disc px-5 mt-2">
-						<li>Waiting-Time: 2-3 Weeks</li>
+						<li>Waiting-Time: 3-4 Weeks</li>
 						<li>Delivery: 0-3 Business Days</li>
 					</ul>
+					<div className="flex justify-center mt-5">
+						<a
+							href="https://www.facebook.com/NUDE-society-102294842099819/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<button className="py-2 px-8 border-2 border-black text-black font-russo transition-colors hover:bg-mainColor hover:border-mainColor duration-300">
+								BUY NOW
+							</button>
+						</a>
+					</div>
 				</div>
 			</div>
 			<p className="text-xl font-medium">
