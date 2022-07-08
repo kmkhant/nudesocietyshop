@@ -4,6 +4,8 @@ import { Navbar, Footer, SearchModal } from "./";
 import { useStateContext } from "../context/StateContext";
 import Modal from "react-modal";
 import { NextSeo } from "next-seo";
+import Script from "next/link";
+
 Modal.setAppElement("#__next");
 
 const Layout: FC<React.PropsWithChildren> = ({
