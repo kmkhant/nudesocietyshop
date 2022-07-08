@@ -22,22 +22,6 @@ export default function Document() {
 			<body>
 				<Main />
 				<NextScript />
-				<Script
-					src="https://www.googletagmanager.com/gtag/js?id=G-X9M2TW92DQ"
-					strategy="afterInteractive"
-				/>
-				<Script
-					id="google-analytics"
-					strategy="afterInteractive"
-				>
-					{`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-X9M2TW92DQ');
-        `}
-				</Script>
 			</body>
 		</Html>
 	);

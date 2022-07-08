@@ -7,6 +7,7 @@ import Router from "next/router";
 import { useEffect } from "react";
 import NProgress from "nprogress";
 import "../styles/nprogress.css";
+import Script from "next/script";
 
 NProgress.configure({ showSpinner: false });
 Router.events.on("routeChangeStart", () =>
@@ -22,6 +23,22 @@ Router.events.on("routeChangeError", () =>
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<StateContext>
+			<Script
+				src="https://www.googletagmanager.com/gtag/js?id=G-X9M2TW92DQ"
+				strategy="afterInteractive"
+			/>
+			<Script
+				id="google-analytics"
+				strategy="afterInteractive"
+			>
+				{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-X9M2TW92DQ');
+        `}
+			</Script>
 			<Layout>
 				<Component {...pageProps} />
 			</Layout>
